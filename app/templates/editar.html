@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Editar Producto</h1>
+  <form method="post">
+    {% csrf_token %}
+    Nombre: <input type="text" name="nombre" value="{{ producto.nombre }}"><br>
+    Precio: <input type="text" name="precio" value="{{ producto.precio }}"><br>
+    Descripción: <textarea name="descripcion">{{ producto.descripcion }}</textarea><br>
+    <button type="submit">Actualizar</button>
+  </form>
+  <a href="{% url 'listar' %}">Volver</a>
+</body>
+</html>

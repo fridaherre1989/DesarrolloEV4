@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Crear Producto</h1>
+  <form method="post">
+    {% csrf_token %}
+    Nombre: <input type="text" name="nombre"><br>
+    Precio: <input type="text" name="precio"><br>
+    Descripción: <textarea name="descripcion"></textarea><br>
+    <button type="submit">Guardar</button>
+  </form>
+  <a href="{% url 'listar' %}">Volver</a>
+</body>
+</html>

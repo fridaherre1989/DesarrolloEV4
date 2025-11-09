@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lista de Productos</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  
+</head>
+<body>
+  <h1>Lista de Productos</h1>
+  <a href="{% url 'crear' %}">Nuevo Producto</a>
+
+  {% if productos %}
+    <table>
+      <thead>
+          <tr>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>Descripción</th>
+              <th>Acciones</th>
+          </tr>
+      </thead>
+      <tbody>
+        {% for producto in productos %}
+          <tr>
+            <td>{{ producto.nombre }}</td>
+            <td>${{ producto.precio }}</td>
+            <td>{{ producto.descripcion|default:"N/A" }}</td>
+            <td>
+              <a href="{% url 'editar' producto.id %}" class="accion-btn edit">Editar</a>
+              <a href="{% url 'eliminar' producto.id %}" class="accion-btn delete">Eliminar</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No hay productos registrados.</p>
+  {% endif %}
+
+</body>
+</html>
